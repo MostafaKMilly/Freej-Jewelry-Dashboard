@@ -15,7 +15,7 @@ function Dashboard(props) {
           }}
         />
         <Typography variant="h5" color="textSecondary">
-          الموفع قيد الإنشاء
+          الموقع قيد الإنشاء
         </Typography>
       </Box>
     </Layout>
