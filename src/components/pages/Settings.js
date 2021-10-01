@@ -36,7 +36,7 @@ function Settings(props) {
         </Box>
       </Grid>
       <Grid item xs={12} sm={8}>
-        <Paper>Mostafa Milly is the best !</Paper>
+        <Paper></Paper>
       </Grid>
     </Grid>
   );
