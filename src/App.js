@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, responsiveFontSizes } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
 import Login from "./components/pages/Login";
 import rtlPlugin from "stylis-plugin-rtl";
@@ -78,12 +78,13 @@ function App() {
       <BrowserRouter>
         <CacheProvider value={cacheRtl}>
           <Switch>
-            <Route exact path="/dashboard">
+            <Route path="/dashboard">
               <Dashboard />
             </Route>
             <Route exact path="/login">
               <Login />
             </Route>
+            <Redirect to="/login" />
           </Switch>
         </CacheProvider>
       </BrowserRouter>

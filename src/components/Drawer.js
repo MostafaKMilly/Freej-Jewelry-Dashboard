@@ -2,9 +2,9 @@ import {
   ExitToApp,
   HomeOutlined,
   PeopleOutlineOutlined,
-  Person,
   PointOfSaleOutlined,
   ReceiptOutlined,
+  Settings,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import {
@@ -52,9 +52,9 @@ function DrawerBody(props) {
   ];
   const menuItemsBottom = [
     {
-      text: "صفحتي الشخصية",
-      icon: <Person color="primary" />,
-      path: "/dashboard/profile",
+      text: "الإعدادات",
+      icon: <Settings color="primary" />,
+      path: "/dashboard/settings",
     },
     {
       text: "تسجيل الخروج",
@@ -81,7 +81,7 @@ function DrawerBody(props) {
           <ListItem
             button
             key={item.text}
-            /*  onClick={() => history.push(item.path)} */
+            onClick={() => history.push(item.path)}
             sx={{
               background:
                 location.pathname === item.path ? "#e6a54326" : "#none",
@@ -102,9 +102,7 @@ function DrawerBody(props) {
           <ListItem
             button
             key={item.text}
-            onClick={() =>
-              item.text === "تسجيل الخروج" ? history.push(item.path) : null
-            }
+            onClick={() => history.push(item.path)}
             sx={{
               background:
                 location.pathname === item.path ? "#e6a54326" : "#none",

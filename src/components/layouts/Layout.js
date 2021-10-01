@@ -11,6 +11,7 @@ function Layout({ children }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
