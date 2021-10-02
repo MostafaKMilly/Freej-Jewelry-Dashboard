@@ -12,16 +12,16 @@ function Settings(props) {
             alt="person"
             sx={{
               backgroundColor: "primary.main",
-              width: "120px",
-              height: "120px",
+              width: "130px",
+              height: "130px",
               opacity: "0.89",
             }}
           >
             <Person
               sx={{
                 color: "#ffffff",
-                width: "75px",
-                height: "75px",
+                width: "79px",
+                height: "79px",
               }}
             />
           </Avatar>

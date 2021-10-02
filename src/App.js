@@ -67,7 +67,7 @@ function App() {
           root: {
             [breakpoints.up("sm")]: {
               "@media all": {
-                minHeight: 94,
+                minHeight: 100,
               },
             },
             [breakpoints.only("xs")]: {
