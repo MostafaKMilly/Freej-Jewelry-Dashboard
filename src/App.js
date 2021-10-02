@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, responsiveFontSizes } from "@mui/material";
-import { blueGrey } from "@mui/material/colors";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
 import Login from "./components/pages/Login";
@@ -19,12 +18,17 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#e6a543",
-        light: "#ffd672",
-        dark: "#b0760e",
+        main: "#c2942a",
+        light: "#f8c45b",
+        dark: "#8e6700",
+      },
+      secondary: {
+        main: "#808385",
+        light: "#afb2b5",
+        dark: "#545658",
       },
       text: {
-        secondary: blueGrey[800],
+        secondary: "#545658",
       },
     },
     typography: {
@@ -33,6 +37,9 @@ function App() {
       fontWeightRegular: 400,
       fontWeightMedium: 500,
       fontWeightBold: 700,
+      body1: {
+        fontSize: "1.1rem",
+      },
     },
     direction: "rtl",
     components: {

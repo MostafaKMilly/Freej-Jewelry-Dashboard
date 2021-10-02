@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Container,
-  Drawer,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Container, Drawer, IconButton, Toolbar } from "@mui/material";
 import { Notifications, Menu } from "@mui/icons-material";
 import DrawerBody from "../Drawer";
 import { CssBaseline } from "@mui/material";
@@ -101,7 +92,7 @@ function Layout({ children }) {
         }}
       >
         <Toolbar></Toolbar>
-        <Container maxWidth>{children}</Container>
+        <Container maxWidth="xl">{children}</Container>
       </Box>
     </Box>
   );

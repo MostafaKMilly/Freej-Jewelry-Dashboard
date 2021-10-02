@@ -89,10 +89,10 @@ function DrawerBody(props) {
               borderRadius: "15px 15px 15px 15px",
             }}
           >
-            <ListItemText sx={{ ml: 2 }}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText>
               <Typography variant="body1">{item.text}</Typography>
             </ListItemText>
-            <ListItemIcon>{item.icon}</ListItemIcon>
           </ListItem>
         ))}
       </List>
@@ -110,12 +110,12 @@ function DrawerBody(props) {
               borderRadius: "15px 15px 15px 15px",
             }}
           >
-            <ListItemText sx={{ ml: 2 }}>
-              <Typography variant="body1">{item.text}</Typography>
-            </ListItemText>
             <ListItemIcon>
               <Avatar sx={{ backgroundColor: "#eceff1" }}>{item.icon}</Avatar>
             </ListItemIcon>
+            <ListItemText>
+              <Typography variant="body1">{item.text}</Typography>
+            </ListItemText>
           </ListItem>
         ))}
       </List>
