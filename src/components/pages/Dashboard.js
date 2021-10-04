@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import Layout from "../layouts/Layout";
+import Dealers from "./Dealers";
 import Settings from "./Settings";
 import { ReactComponent as WorkProgress } from "./workProgress.svg";
 
@@ -29,6 +30,9 @@ function Dashboard(props) {
       <Switch>
         <Route exact path={`${path}/settings`}>
           <Settings />
+        </Route>
+        <Route exact path={`${path}/dealers`}>
+          <Dealers />
         </Route>
         <Route exact path={`${path}`}>
           <OnProgress />
