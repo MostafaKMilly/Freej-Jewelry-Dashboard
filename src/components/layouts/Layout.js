@@ -1,22 +1,57 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
-import { AppBar, Container, Drawer, IconButton, Toolbar } from "@mui/material";
-import { Notifications, Menu } from "@mui/icons-material";
-import DrawerBody from "../Drawer";
+import {
+  AppBar,
+  Avatar,
+  Container,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Notifications, Menu, Add } from "@mui/icons-material";
+import DrawerBody from "../UI/Drawer";
 import { CssBaseline } from "@mui/material";
+import { useLocation } from "react-router";
 const drawerWidth = 280;
 
 function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const getToolBarContent = () => {
+    if (location.pathname === "/dashboard/dealers") {
+      return (
+        <>
+          <Typography variant="h5" color="textSecondary">
+            التجار
+          </Typography>
+          <Box sx={{ flexGrow: 1 }}></Box>
+          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
+            <Avatar sx={{ backgroundColor: "primary.main" }}>
+              <Add color="#fff"></Add>
+            </Avatar>
+          </IconButton>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Box sx={{ flexGrow: 1 }}></Box>
+          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
+            <Notifications color="primary"></Notifications>
+          </IconButton>
+        </>
+      );
+    }
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
-        color="transparent"
+        color="default"
         position="fixed"
         elevation={0}
         sx={{
@@ -36,11 +71,7 @@ function Layout({ children }) {
           >
             <Menu />
           </IconButton>
-          <Box sx={{ flexGrow: 1 }}></Box>
-
-          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
-            <Notifications color="primary"></Notifications>
-          </IconButton>
+          {getToolBarContent()}
         </Toolbar>
       </AppBar>
       <Box
