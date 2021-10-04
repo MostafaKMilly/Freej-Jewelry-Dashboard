@@ -116,6 +116,7 @@ function Login(props) {
               />
               <Box sx={{}}>
                 <FormControlLabel
+                  color="textSecondary"
                   control={
                     <Checkbox
                       value="rememberMe"
@@ -136,6 +137,7 @@ function Login(props) {
                   padding: "12px",
                   mt: 2,
                   mb: 2,
+                  color: "#ffffff",
                 }}
               >
                 Sign in
