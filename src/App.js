@@ -40,6 +40,9 @@ function App() {
       body1: {
         fontSize: "1.1rem",
       },
+      body2: {
+        fontSize: "0.957rem",
+      },
     },
     direction: "rtl",
     components: {

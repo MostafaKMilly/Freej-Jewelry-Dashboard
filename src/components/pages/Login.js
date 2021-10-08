@@ -114,18 +114,16 @@ function Login(props) {
                 id="password"
                 autoComplete="current-password"
               />
-              <Box sx={{}}>
-                <FormControlLabel
-                  color="textSecondary"
-                  control={
-                    <Checkbox
-                      value="rememberMe"
-                      defaultChecked
-                      color="primary"
-                    />
-                  }
-                  label="تذكرني"
-                />
+              <Box sx={{ mt: 2, mb: 1 }}>
+                <Link
+                  variant="body2"
+                  color="#2196f3"
+                  type="button"
+                  href="#"
+                  underline="none"
+                >
+                  هل نسيت كلمة السر ؟
+                </Link>
               </Box>
 
               <Button
@@ -142,20 +140,9 @@ function Login(props) {
               >
                 Sign in
               </Button>
+
               <Grid container>
-                <Grid item xs>
-                  <Box sx={{ mb: 3 }}>
-                    <Link
-                      variant="body1"
-                      color="#2196f3"
-                      type="button"
-                      href="#"
-                      underline="none"
-                    >
-                      هل نسيت كلمة السر ؟
-                    </Link>
-                  </Box>
-                </Grid>
+                <Grid item xs></Grid>
               </Grid>
             </Box>
             <Typography
