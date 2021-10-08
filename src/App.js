@@ -2,11 +2,12 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme, responsiveFontSizes } from "@mui/material";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
-import Login from "./components/pages/Login";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { createBreakpoints } from "@mui/system";
+import Signin from "./components/pages/Signin";
+import Signup from "./components/pages/Signup";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -47,6 +48,13 @@ function App() {
     direction: "rtl",
     components: {
       MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& input": {
+              fontFamily: "Tajawal",
+            },
+          },
+        },
         variants: [
           {
             props: { variant: "filled" },
@@ -92,7 +100,10 @@ function App() {
               <Dashboard />
             </Route>
             <Route exact path="/login">
-              <Login />
+              <Signin />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
             </Route>
             <Redirect to="/login" />
           </Switch>
