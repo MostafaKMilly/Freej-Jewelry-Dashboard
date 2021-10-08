@@ -5,23 +5,7 @@ import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import Layout from "../layouts/Layout";
 import Dealers from "./Dealers";
 import Settings from "./Settings";
-import { ReactComponent as WorkProgress } from "./workProgress.svg";
 
-const OnProgress = () => {
-  return (
-    <Box textAlign="center" position="relative">
-      <WorkProgress
-        style={{
-          maxWidth: "335px",
-          marginBottom: "-177px",
-        }}
-      />
-      <Typography variant="h5" color="textSecondary">
-        الموقع قيد الإنشاء
-      </Typography>
-    </Box>
-  );
-};
 function Dashboard(props) {
   const { path } = useRouteMatch();
 
@@ -33,9 +17,6 @@ function Dashboard(props) {
         </Route>
         <Route exact path={`${path}/dealers`}>
           <Dealers />
-        </Route>
-        <Route exact path={`${path}`}>
-          <OnProgress />
         </Route>
         <Redirect to={`${path}`} />
       </Switch>
