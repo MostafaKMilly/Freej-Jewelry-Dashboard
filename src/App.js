@@ -48,6 +48,13 @@ function App() {
     direction: "rtl",
     components: {
       MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& input": {
+              fontFamily: "Tajawal",
+            },
+          },
+        },
         variants: [
           {
             props: { variant: "filled" },

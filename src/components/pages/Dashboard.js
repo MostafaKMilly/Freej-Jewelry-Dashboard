@@ -1,5 +1,3 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import Layout from "../layouts/Layout";
