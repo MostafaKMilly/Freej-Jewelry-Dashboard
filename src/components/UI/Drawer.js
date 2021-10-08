@@ -81,7 +81,7 @@ function DrawerBody(props) {
           <ListItem
             button
             key={item.text}
-            onClick={() => history.push(item.path)}
+            onClick={() => /* history.push(item.path) */ {}}
             sx={{
               background:
                 location.pathname === item.path ? "#e6a54326" : "#none",
