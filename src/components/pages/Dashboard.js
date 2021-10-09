@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import Layout from "../layouts/Layout";
 import Dealers from "./Dealers";
+import Home from "./Home";
 import Settings from "./Settings";
 
 function Dashboard(props) {
@@ -15,6 +16,9 @@ function Dashboard(props) {
         </Route>
         <Route exact path={`${path}/dealers`}>
           <Dealers />
+        </Route>
+        <Route exact path={`${path}`}>
+          <Home />
         </Route>
         <Redirect to={`${path}`} />
       </Switch>
