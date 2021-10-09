@@ -40,7 +40,7 @@ function Layout({ children }) {
       return (
         <>
           <Box sx={{ flexGrow: 1 }}></Box>
-          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
+          <IconButton aria-label="notification">
             <Notifications color="primary"></Notifications>
           </IconButton>
         </>
@@ -56,18 +56,18 @@ function Layout({ children }) {
         elevation={0}
         sx={{
           width: {
-            sm: `calc(100% - ${drawerWidth}px)`,
+            md: `calc(100% - ${drawerWidth}px)`,
           },
-          ml: { sm: `${drawerWidth}px` },
+          ml: { md: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar component={Container} maxWidth="lg">
           <IconButton
             color="primary"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { md: "none" } }}
           >
             <Menu />
           </IconButton>
@@ -76,7 +76,7 @@ function Layout({ children }) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
         aria-label="mailbox folders"
       >
         <Drawer
@@ -90,13 +90,13 @@ function Layout({ children }) {
               left: 0,
             },
 
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", sm: "block", md: "none" },
           }}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           edge="end"
           anchor="right"
@@ -106,7 +106,7 @@ function Layout({ children }) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { xs: "none", md: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -123,7 +123,7 @@ function Layout({ children }) {
         }}
       >
         <Toolbar></Toolbar>
-        <Container maxWidth="xl">{children}</Container>
+        <Container maxWidth="lg">{children}</Container>
       </Box>
     </Box>
   );
