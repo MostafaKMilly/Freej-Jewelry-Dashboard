@@ -36,7 +36,7 @@ export function Login(props) {
         elevation={0}
         alignSelf="center"
         sx={{
-          height: props.type === "signup" ? "auto" : "100%",
+          minHeight: "100%",
         }}
       >
         <Container
