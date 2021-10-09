@@ -66,6 +66,13 @@ function App() {
           },
         ],
       },
+      MuiTable: {
+        styleOverrides: {
+          root: {
+            fontSize: "1.0rem",
+          },
+        },
+      },
       MuiButton: {
         styleOverrides: {
           root: {
