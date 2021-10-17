@@ -18,7 +18,8 @@ const columns = [
   {
     field: "id",
     headerName: "ID",
-    width: 90,
+    width: 900,
+    headerClassName: "super-app-theme--header",
   },
   {
     field: "fullName",
@@ -28,16 +29,19 @@ const columns = [
       `${params.getValue(params.id, "firstName") || ""} ${
         params.getValue(params.id, "lastName") || ""
       }`,
+    headerClassName: "super-app-theme--header",
   },
   {
     field: "address",
     headerName: "Address",
     width: 110,
+    headerClassName: "super-app-theme--header",
   },
   {
     field: "amount",
     headerName: "Amount",
     width: 90,
+    headerClassName: "super-app-theme--header",
   },
 ];
 
@@ -53,6 +57,9 @@ function DealersTable(props) {
             rowsPerPageOptions={[5]}
             checkboxSelection
             disableColumnMenu
+            style={{
+              border: "none",
+            }}
           />
         </Box>
       </Box>

@@ -12,3 +12,12 @@ body {
 .MuiTablePagination-actions {
   direction: ltr;
 }
+
+.super-app-theme--header {
+  background-color: aqua;
+  border: none;
+}
+
+.super-app-theme--header > .MuiDataGrid-columnSeparator {
+  visibility: hidden;
+}
