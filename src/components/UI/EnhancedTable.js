@@ -40,10 +40,16 @@ function MyTablePagination({
       }}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
+      component={Box}
       sx={{
-        "& div": {
-          flexFlow: "wrap",
-          justifyContent: "center",
+        direction: "rtl",
+        flexDirection: "row-reverse",
+        padding: "30px",
+        display: "flex",
+        justifyContent: "right",
+        "& .MuiTablePagination-toolbar": {
+          padding: 2,
+          overflow: "auto",
         },
       }}
     />
@@ -118,31 +124,17 @@ function EnhancedTable({ columns, data }) {
               );
             })}
           </TableBody>
-          <TableFooter>
-            <TableRow
-              sx={{
-                "& td": {
-                  borderBottom: "none",
-                },
-              }}
-            >
-              <td sx={{ width: "50%" }}></td>
-
-              <MyTablePagination
-                {...{
-                  data,
-                  pageSize,
-                  pageIndex,
-                  handleChangePage,
-                  handleChangeRowsPerPage,
-                }}
-              />
-
-              <td sx={{ width: "50%" }}></td>
-            </TableRow>
-          </TableFooter>
         </Table>
       </TableContainer>
+      <MyTablePagination
+        {...{
+          data,
+          pageSize,
+          pageIndex,
+          handleChangePage,
+          handleChangeRowsPerPage,
+        }}
+      />
     </>
   );
 }
