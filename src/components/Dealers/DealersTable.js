@@ -18,13 +18,14 @@ const columns = [
   {
     field: "id",
     headerName: "ID",
-    width: 900,
+    width: 120,
     headerClassName: "super-app-theme--header",
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "fullName",
     headerName: "Full name",
-    width: 160,
     valueGetter: (params) =>
       `${params.getValue(params.id, "firstName") || ""} ${
         params.getValue(params.id, "lastName") || ""
@@ -34,13 +35,11 @@ const columns = [
   {
     field: "address",
     headerName: "Address",
-    width: 110,
     headerClassName: "super-app-theme--header",
   },
   {
     field: "amount",
     headerName: "Amount",
-    width: 90,
     headerClassName: "super-app-theme--header",
   },
 ];
