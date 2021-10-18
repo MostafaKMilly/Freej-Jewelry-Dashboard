@@ -8,15 +8,6 @@ html {
 body {
   background-color: #f5f5f5 !important;
 }
-
 .MuiTablePagination-actions {
   direction: ltr;
-}
-
-.super-app-theme--header {
-  border: none;
-}
-
-.super-app-theme--header > .MuiDataGrid-columnSeparator {
-  visibility: hidden;
 }
