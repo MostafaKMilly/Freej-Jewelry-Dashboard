@@ -19,7 +19,7 @@ export function Login(props) {
           backgroundImage:
             props.type === "signup"
               ? "url(./assets/images/signUpPhoto.svg)"
-              : "url(./assets/images/signInPhoto.svg)",
+              : "url(./assets/images/signinPhoto.svg)",
           backgroundRepeat: "no-repeat",
           bgcolor: "#eceff1",
           backgroundSize: "cover",

@@ -14,7 +14,14 @@ const CustomComponent = styled(TextField)(({ theme }) => ({
   },
 }));
 
-function CustomTextField({ label, variant, fullWidth, required, size }) {
+function CustomTextField({
+  label,
+  variant,
+  fullWidth,
+  required,
+  size,
+  ...props
+}) {
   return (
     <>
       <CustomComponent
@@ -23,6 +30,7 @@ function CustomTextField({ label, variant, fullWidth, required, size }) {
         fullWidth={fullWidth}
         required={required}
         size={size}
+        {...props}
       />
     </>
   );
