@@ -2,9 +2,9 @@ import {
   ExitToApp,
   HomeOutlined,
   PeopleOutlineOutlined,
+  Person,
   PointOfSaleOutlined,
   ReceiptOutlined,
-  Settings,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
 import {
@@ -52,8 +52,8 @@ function DrawerBody(props) {
   ];
   const menuItemsBottom = [
     {
-      text: "الإعدادات",
-      icon: <Settings color="primary" />,
+      text: "Mostafa Milly",
+      icon: <Person color="primary" />,
       path: "/dashboard/settings",
     },
     {
