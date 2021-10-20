@@ -9,7 +9,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
   TablePagination,
   TableRow,
@@ -29,7 +28,7 @@ function MyTablePagination({
 }) {
   return (
     <TablePagination
-      rowsPerPageOptions={[7, 10, 25, { label: "All", value: data.length }]}
+      rowsPerPageOptions={[8, 10, 25, { label: "All", value: data.length }]}
       colSpan={3}
       count={data.length}
       rowsPerPage={pageSize}
@@ -58,7 +57,7 @@ function MyTablePagination({
 
 function EnhancedTable({ columns, data }) {
   const dealersTable = useTable(
-    { columns, data, initialState: { pageIndex: 0, pageSize: 7 } },
+    { columns, data, initialState: { pageIndex: 0, pageSize: 8 } },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -86,7 +85,7 @@ function EnhancedTable({ columns, data }) {
   };
   return (
     <>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      {/*  <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
       <TableContainer>
         <Table {...getTableProps()} size="medium">
           <TableHead>

@@ -1,19 +1,62 @@
 import React, { useState } from "react";
-import { Box } from "@mui/system";
+import { alpha, Box, styled } from "@mui/system";
 import {
   AppBar,
   Avatar,
   Container,
   Drawer,
   IconButton,
+  InputBase,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import { Notifications, Menu, Add } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
 import DrawerBody from "../UI/Drawer";
 import { CssBaseline } from "@mui/material";
 import { useLocation } from "react-router";
 const drawerWidth = 280;
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.primary.main, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.primary.main, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    fontFamily: theme.typography.fontFamily,
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 
 function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -22,17 +65,15 @@ function Layout({ children }) {
     setMobileOpen(!mobileOpen);
   };
   const getToolBarContent = () => {
-    if (location.pathname === "/dashboard/dealers") {
+    if (
+      location.pathname === "/dashboard" ||
+      location.pathname === "/dashboard/settings"
+    ) {
       return (
         <>
-          <Typography variant="h5" color="textSecondary">
-            التجار
-          </Typography>
           <Box sx={{ flexGrow: 1 }}></Box>
-          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
-            <Avatar sx={{ backgroundColor: "primary.main" }}>
-              <Add color="#fff"></Add>
-            </Avatar>
+          <IconButton aria-label="notification">
+            <Notifications color="primary"></Notifications>
           </IconButton>
         </>
       );
@@ -40,8 +81,10 @@ function Layout({ children }) {
       return (
         <>
           <Box sx={{ flexGrow: 1 }}></Box>
-          <IconButton aria-label="notification">
-            <Notifications color="primary"></Notifications>
+          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
+            <Avatar sx={{ backgroundColor: "primary.main" }}>
+              <Add color="#fff"></Add>
+            </Avatar>
           </IconButton>
         </>
       );
@@ -71,6 +114,15 @@ function Layout({ children }) {
           >
             <Menu />
           </IconButton>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="ابحث .."
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
           {getToolBarContent()}
         </Toolbar>
       </AppBar>
