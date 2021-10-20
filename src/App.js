@@ -109,7 +109,7 @@ function App() {
             <Route exact path="/login">
               <Signin />
             </Route>
-            <Route exact path="/signup">
+            <Route path="/signup">
               <Signup />
             </Route>
             <Redirect to="/login" />

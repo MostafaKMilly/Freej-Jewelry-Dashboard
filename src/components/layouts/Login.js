@@ -42,7 +42,7 @@ export function Login(props) {
         <Container
           component="main"
           maxWidth="xs"
-          sx={{ mt: { sm: props.type === "signup" ? 7 : 16, xs: 8 }, mb: 4 }}
+          sx={{ mt: { sm: 16, xs: 8 }, mb: 4 }}
         >
           <Box
             sx={{
