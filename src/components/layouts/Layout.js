@@ -80,6 +80,15 @@ function Layout({ children }) {
     } else {
       return (
         <>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="ابحث .."
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
           <Box sx={{ flexGrow: 1 }}></Box>
           <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
             <Avatar sx={{ backgroundColor: "primary.main" }}>
@@ -114,15 +123,7 @@ function Layout({ children }) {
           >
             <Menu />
           </IconButton>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="ابحث .."
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+
           {getToolBarContent()}
         </Toolbar>
       </AppBar>
