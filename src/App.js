@@ -90,6 +90,14 @@ function App() {
             borderRadius: "7px 7px 7px 7px",
           },
         },
+        variants: [
+          {
+            props: { variant: "contained" },
+            style: {
+              color: "white",
+            },
+          },
+        ],
       },
       MuiToolbar: {
         styleOverrides: {
