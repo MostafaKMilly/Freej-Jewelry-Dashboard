@@ -64,6 +64,17 @@ function App() {
               },
             },
           },
+          {
+            props: { variant: "standard" },
+            style: {
+              "& .MuiInputBase-root:after": {
+                borderBottomColor: "#e6a543",
+              },
+              "& .MuiInputBase-root:hover": {
+                borderBottomColor: "#e6a543 !important",
+              },
+            },
+          },
         ],
       },
       MuiTable: {
@@ -79,6 +90,14 @@ function App() {
             borderRadius: "7px 7px 7px 7px",
           },
         },
+        variants: [
+          {
+            props: { variant: "contained" },
+            style: {
+              color: "white",
+            },
+          },
+        ],
       },
       MuiToolbar: {
         styleOverrides: {

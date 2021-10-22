@@ -1,42 +1,69 @@
-import { Person } from "@mui/icons-material";
-import { Avatar, Grid, Paper, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { History, Person } from "@mui/icons-material";
+import {
+  Avatar,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { Box, styled } from "@mui/system";
 import React from "react";
+import EditPersonalForm from "../Settings/EditPersonalForm";
+
+const CustomListItemButton = styled(ListItemButton)(({ theme }) => ({
+  borderLeft: `2px solid ${theme.palette.primary.main}`,
+}));
 
 function Settings(props) {
+  const list = [
+    {
+      name: "معلوماتي الشخصية",
+      icon: <Person color="primary"></Person>,
+    },
+    {
+      name: "النشاط",
+      icon: <History color="primary"></History>,
+    },
+  ];
   return (
-    <Grid container spacing={10}>
-      <Grid item xs={12} sm={4}>
+    <Grid container spacing={7}>
+      <Grid item xs={12} sm={3.3}>
         <Box textAlign="-webkit-center">
-          <Avatar
-            alt="person"
-            sx={{
-              backgroundColor: "primary.main",
-              width: "130px",
-              height: "130px",
-              opacity: "0.89",
-            }}
-          >
-            <Person
-              sx={{
-                color: "#ffffff",
-                width: "79px",
-                height: "79px",
-              }}
-            />
-          </Avatar>
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="h6" fontWeight="500" color="textSecondary">
-              Mostafa Milly
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Admin
-            </Typography>
-          </Box>
+          <List>
+            {list.map((item, index) => (
+              <ListItem>
+                <CustomListItemButton
+                  dense
+                  sx={{ backgroundColor: index === 0 ? "#e6a54326" : "none" }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ backgroundColor: "white" }}>
+                      {item.icon}
+                    </Avatar>
+                  </ListItemIcon>
+                  <ListItemText>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      fontWeight="500"
+                    >
+                      {item.name}
+                    </Typography>
+                  </ListItemText>
+                </CustomListItemButton>
+              </ListItem>
+            ))}
+          </List>
         </Box>
       </Grid>
       <Grid item xs={12} sm={8}>
-        <Paper></Paper>
+        <Paper elevation={0} sx={{ backgroundColor: "transparent" }}>
+          <EditPersonalForm />
+        </Paper>
       </Grid>
     </Grid>
   );
