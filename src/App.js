@@ -64,6 +64,17 @@ function App() {
               },
             },
           },
+          {
+            props: { variant: "standard" },
+            style: {
+              "& .MuiInputBase-root:after": {
+                borderBottomColor: "#e6a543",
+              },
+              "& .MuiInputBase-root:hover": {
+                borderBottomColor: "#e6a543 !important",
+              },
+            },
+          },
         ],
       },
       MuiTable: {
