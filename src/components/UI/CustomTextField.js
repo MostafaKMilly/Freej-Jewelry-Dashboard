@@ -12,6 +12,9 @@ const CustomComponent = styled(TextField)(({ theme }) => ({
       borderColor: theme.palette.primary.main,
     },
   },
+  "& textarea": {
+    fontFamily: theme.typography.fontFamily,
+  },
 }));
 
 function CustomTextField({
