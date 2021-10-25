@@ -14,6 +14,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import DrawerBody from "../UI/Drawer";
 import { CssBaseline } from "@mui/material";
 import { useLocation } from "react-router";
+import { useSelector } from "react-redux";
+import { selectGlobalFilter } from "../../redux/slices/globalFilterSlice";
 const drawerWidth = 280;
 
 const Search = styled("div")(({ theme }) => ({
@@ -61,6 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { filter, setFilter } = useSelector(selectGlobalFilter);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -87,6 +90,8 @@ function Layout({ children }) {
             <StyledInputBase
               placeholder="ابحث .."
               inputProps={{ "aria-label": "search" }}
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }}></Box>

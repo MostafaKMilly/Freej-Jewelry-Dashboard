@@ -15,10 +15,10 @@ import {
   TableSortLabel,
 } from "@mui/material";
 
-import React from "react";
-import GlobalFilter from "./GlobalFilter";
+import React, { useEffect } from "react";
+import { configureGlobalFilter } from "../../redux/slices/globalFilterSlice";
 import { Box } from "@mui/system";
-
+import { useDispatch } from "react-redux";
 function MyTablePagination({
   data,
   pageSize,
@@ -75,7 +75,17 @@ function EnhancedTable({ columns, data }) {
   } = dealersTable;
 
   const { globalFilter, pageIndex, pageSize } = state;
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(
+      configureGlobalFilter({
+        filter: globalFilter,
+        setFilter: setGlobalFilter,
+      })
+    );
+    // eslint-disable-next-line
+  }, []);
   const handleChangePage = (event, newPage) => {
     gotoPage(newPage);
   };
