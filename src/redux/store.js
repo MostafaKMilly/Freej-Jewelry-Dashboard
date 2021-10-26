@@ -9,9 +9,7 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ["globalFilter/configureGlobalFilter"],
-      },
+      serializableCheck: false,
     }),
 });
 
