@@ -3,25 +3,20 @@ import { Box } from "@mui/system";
 import React from "react";
 import CustomTextField from "../UI/CustomTextField";
 import { useDispatch } from "react-redux";
-import { Control, LocalForm } from "react-redux-form";
 import { editGoldsKarats } from "../../redux/slices/goldsKaratsSlice";
+import { useForm, Controller } from "react-hook-form";
 
-const editKaratsTextField = (props) => {
+const EditKaratsTextField = ({ field }) => {
   return (
-    <CustomTextField
-      size="small"
-      label="عيار 21"
-      onChange={props.onChange}
-    ></CustomTextField>
+    <CustomTextField size="small" label="عيار 21" {...field}></CustomTextField>
   );
 };
 
 function EditPricesForm(props) {
   const dispatch = useDispatch();
-  const handleSubmit = (values) => {
-    if (values.karat && !isNaN(values.karat)) {
-      dispatch(editGoldsKarats(values.karat));
-    }
+  const { control, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    dispatch(editGoldsKarats(data.karat21));
   };
   return (
     <Box
@@ -56,12 +51,16 @@ function EditPricesForm(props) {
         }}
       ></Box>
       <Box
-        component={LocalForm}
+        component="form"
         sx={{ display: "flex", gap: 1, mb: 2 }}
         justifyContent="center"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <Control model=".karat" name="karat" component={editKaratsTextField} />
+        <Controller
+          control={control}
+          name="karat21"
+          render={EditKaratsTextField}
+        ></Controller>
         <Button variant="text" type="submit">
           ادخل
         </Button>
