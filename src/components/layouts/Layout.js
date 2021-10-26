@@ -63,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const { filter, setFilter } = useSelector(selectGlobalFilter);
+  const { setFilter } = useSelector(selectGlobalFilter);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -90,7 +90,6 @@ function Layout({ children }) {
             <StyledInputBase
               placeholder="ابحث .."
               inputProps={{ "aria-label": "search" }}
-              value={filter}
               onChange={(e) => setFilter(e.target.value)}
             />
           </Search>

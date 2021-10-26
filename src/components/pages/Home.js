@@ -1,37 +1,33 @@
 import { AttachMoney } from "@mui/icons-material";
 import { Button, ButtonGroup, Grid, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGoldsKarats } from "../../redux/slices/goldsKaratsSlice";
 import EditPricesForm from "../Home/EditPricesForm";
 import PricesTable from "../Home/PricesTable";
 
 function Home(props) {
+  const goldsKarats = useSelector((state) => state.goldsKarats);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchGoldsKarats());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (goldsKarats.isLoading) {
+    return <Typography>Loading</Typography>;
+  }
+
   const tableHead = ["العيار", "السعر"];
-  const tableBody = [
-    {
-      name: "عيار 12",
-      price: "1000",
-    },
-    {
-      name: "عيار 14",
-      price: "1000",
-    },
-    {
-      name: "عيار 18",
-      price: "1000",
-    },
-    {
-      name: "عيار 22",
-      price: "1000",
-    },
-    {
-      name: "عيار 24",
-      price: "1000",
-    },
-  ];
+  const tableBody = [12, 14, 18, 21, 22, 24].map((karat) => ({
+    name: `عيار ${karat}`,
+    price:
+      karat === 21 ? goldsKarats[21] : parseInt((karat * goldsKarats[21]) / 21),
+  }));
   return (
     <>
-      <Grid container sx={{ mb: 5 }}>
+      <Grid container sx={{ mb: 6 }}>
         <Grid
           item
           xs={12}
@@ -82,7 +78,7 @@ function Home(props) {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Grid container spacing={5}>
+      <Grid container spacing={5} mb={3}>
         <Grid item elevation={0} xs={12} md={4}>
           <EditPricesForm />
         </Grid>

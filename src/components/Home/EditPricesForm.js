@@ -2,8 +2,27 @@ import { Button, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import CustomTextField from "../UI/CustomTextField";
+import { useDispatch } from "react-redux";
+import { Control, LocalForm } from "react-redux-form";
+import { editGoldsKarats } from "../../redux/slices/goldsKaratsSlice";
+
+const editKaratsTextField = (props) => {
+  return (
+    <CustomTextField
+      size="small"
+      label="عيار 21"
+      onChange={props.onChange}
+    ></CustomTextField>
+  );
+};
 
 function EditPricesForm(props) {
+  const dispatch = useDispatch();
+  const handleSubmit = (values) => {
+    if (values.karat && !isNaN(values.karat)) {
+      dispatch(editGoldsKarats(values.karat));
+    }
+  };
   return (
     <Box
       component={Paper}
@@ -26,8 +45,8 @@ function EditPricesForm(props) {
         src="assets\images\edit.svg"
         alt="edit"
         sx={{
-          mt: 8.5,
-          mb: 6.5,
+          mt: 9.5,
+          mb: 7.5,
           width: {
             xs: 200,
             sm: 140,
@@ -37,12 +56,15 @@ function EditPricesForm(props) {
         }}
       ></Box>
       <Box
-        component="form"
+        component={LocalForm}
         sx={{ display: "flex", gap: 1, mb: 2 }}
         justifyContent="center"
+        onSubmit={handleSubmit}
       >
-        <CustomTextField size="small" label="عيار 21"></CustomTextField>
-        <Button variant="text">ادخل</Button>
+        <Control model=".karat" name="karat" component={editKaratsTextField} />
+        <Button variant="text" type="submit">
+          ادخل
+        </Button>
       </Box>
     </Box>
   );
