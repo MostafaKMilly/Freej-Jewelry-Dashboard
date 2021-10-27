@@ -3,28 +3,38 @@ import { Button, ButtonGroup, Grid, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { fetchGoldsKarats } from "../../redux/slices/goldsKaratsSlice";
 import EditPricesForm from "../Home/EditPricesForm";
 import PricesTable from "../Home/PricesTable";
 
 function Home(props) {
-  const goldsKarats = useSelector((state) => state.goldsKarats);
+  const goldsKarats = useSelector((state) => state.goldsKarats.karats);
+  const goldsKaratsIsLoading = useSelector(
+    (state) => state.goldsKarats.isLoading
+  );
+  const history = useHistory();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchGoldsKarats());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (goldsKarats.isLoading) {
+  if (goldsKaratsIsLoading) {
     return <Typography>Loading</Typography>;
   }
 
   const tableHead = ["العيار", "السعر"];
-  const tableBody = [12, 14, 18, 21, 22, 24].map((karat) => ({
+  const tableBody = Object.keys(goldsKarats).map((karat) => ({
     name: `عيار ${karat}`,
-    price:
-      karat === 21 ? goldsKarats[21] : parseInt((karat * goldsKarats[21]) / 21),
+    price: goldsKarats[karat],
   }));
+
+  const nextPath = (path) => {
+    history.push(path);
+  };
+
   return (
     <>
       <Grid container sx={{ mb: 6 }}>
@@ -72,7 +82,9 @@ function Home(props) {
               },
             }}
           >
-            <Button>اضافة فاتورة</Button>
+            <Button onClick={() => nextPath("/dashboard/receipts/add")}>
+              اضافة فاتورة
+            </Button>
             <Button>اضافة تاجر</Button>
             <Button>عرض المبيعات</Button>
           </ButtonGroup>
