@@ -1,6 +1,12 @@
 import { Home } from "@mui/icons-material";
-import React from "react";
+import { Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {
+  fetchReceitps,
+  selectReceipts,
+} from "../../redux/slices/receiptsSlice";
 import ReceiptsTable from "../Receipts/ReceiptsTable";
 import CustomBreadcrumbs from "../UI/CustomBreadcrumbs";
 
@@ -24,10 +30,23 @@ const ReciptsBreadcurmbs = () => {
 };
 
 function Receipts(props) {
+  const receiptsIsLoading = useSelector((state) => state.receipts.isLoading);
+  const receipts = useSelector(selectReceipts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchReceitps());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (receiptsIsLoading) {
+    return <Typography>Loading</Typography>;
+  }
+
   return (
     <div>
       <ReciptsBreadcurmbs />
-      <ReceiptsTable />
+      <ReceiptsTable data={receipts} />
     </div>
   );
 }
