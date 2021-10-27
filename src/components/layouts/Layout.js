@@ -7,21 +7,31 @@ import {
   Drawer,
   IconButton,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import { Notifications, Menu, Add } from "@mui/icons-material";
 import DrawerBody from "../UI/Drawer";
 import { CssBaseline } from "@mui/material";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import SearchBar from "../UI/SearchBar";
 const drawerWidth = 280;
 
 function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const history = useHistory();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
   const getToolBarContent = () => {
+    const handleAddClick = () => {
+      if (location.pathname === "/dashboard/receipts") {
+        history.push("/dashboard/receipts/add");
+      } else if (location.pathname === "/dashboard/dealers") {
+        history.push("/dashboard/dealers/add");
+      }
+    };
+
     if (
       location.pathname === "/dashboard/receipts" ||
       location.pathname === "/dashboard/dealers"
@@ -30,7 +40,11 @@ function Layout({ children }) {
         <>
           <SearchBar />
           <Box sx={{ flexGrow: 1 }}></Box>
-          <IconButton aria-label="notification" sx={{ mr: { sm: 2 } }}>
+          <IconButton
+            aria-label="notification"
+            sx={{ mr: { sm: 2 } }}
+            onClick={handleAddClick}
+          >
             <Avatar sx={{ backgroundColor: "primary.main" }}>
               <Add color="#fff"></Add>
             </Avatar>
