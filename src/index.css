@@ -11,3 +11,6 @@ body {
 .MuiTablePagination-actions {
   direction: ltr;
 }
+.MuiLink-underlineHover {
+  cursor: pointer;
+}

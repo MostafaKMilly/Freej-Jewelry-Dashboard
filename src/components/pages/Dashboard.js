@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import Layout from "../layouts/Layout";
+import AddReceipts from "../Receipts/AddReceipts";
 import Dealers from "./Dealers";
 import Home from "./Home";
 import Receipts from "./Receipts";
@@ -20,6 +21,9 @@ function Dashboard(props) {
         </Route>
         <Route exact path={`${path}/receipts`}>
           <Receipts />
+        </Route>
+        <Route exact path={`${path}/receipts/add`}>
+          <AddReceipts />
         </Route>
         <Route exact path={`${path}`}>
           <Home />
