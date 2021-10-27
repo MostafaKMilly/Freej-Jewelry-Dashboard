@@ -13,7 +13,9 @@ import {
 } from "@mui/material";
 import { Box, styled } from "@mui/system";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { addReceipt } from "../../redux/slices/receiptsSlice";
 import CustomBreadcrumbs from "../UI/CustomBreadcrumbs";
 import AddReceiptsForm from "./AddReceiptsForm";
 
@@ -96,6 +98,7 @@ function RegisterReceiptsTable(props) {
 const AddReciptsBreadcurmbs = () => {
   const history = useHistory();
   const nextPage = (next) => history.push(next);
+
   const navs = [
     {
       name: "الرئيسية",
@@ -129,6 +132,9 @@ function AddReceipts(props) {
     "ملاحظات",
   ];
   const [registerReceiptsArr, setRegisterReceiptsArr] = useState([]);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const calcGoldPrice = () => {
     return parseInt(
       registerReceiptsArr.reduce(
@@ -147,6 +153,16 @@ function AddReceipts(props) {
     return totalRent > 0 ? totalRent : 0;
   };
 
+  const handleSave = () => {
+    dispatch(
+      addReceipt({
+        date: new Date().toISOString().split("T")[0],
+        totalRent: calcTotalRent(),
+        totalValue: calcTotalRent() + calcGoldPrice(),
+      })
+    );
+    history.push("/dashboard/receipts");
+  };
   return (
     <>
       <AddReciptsBreadcurmbs />
@@ -191,7 +207,12 @@ function AddReceipts(props) {
                 >
                   حفظ مع طباعة
                 </Button>
-                <Button variant="contained" color="success" endIcon={<Save />}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleSave}
+                  endIcon={<Save />}
+                >
                   حفظ
                 </Button>
               </Box>
