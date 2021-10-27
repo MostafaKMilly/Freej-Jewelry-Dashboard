@@ -40,6 +40,13 @@ function Layout({ children }) {
     } else {
       return (
         <>
+          {location.pathname === "/dashboard/receipts/add" ? (
+            <Typography variant="h6" color="textSecondary">
+              اضافة فاتورة
+            </Typography>
+          ) : (
+            <></>
+          )}
           <Box sx={{ flexGrow: 1 }}></Box>
           <IconButton aria-label="notification">
             <Notifications color="primary"></Notifications>
