@@ -212,6 +212,7 @@ function AddReceipts(props) {
                   color="success"
                   onClick={handleSave}
                   endIcon={<Save />}
+                  sx={{ mb: { xs: 1, md: 0 } }}
                 >
                   حفظ
                 </Button>
